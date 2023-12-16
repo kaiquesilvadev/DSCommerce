@@ -2,6 +2,9 @@ package com.kaiqueDev.DSCommerce.entites;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import com.kaiqueDev.DSCommerce.enuns.OrderStatus;
 
@@ -13,6 +16,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -45,10 +49,21 @@ public class Order implements Serializable {
 	private User client;
 
 	/*
-	 * para que o mapeamento funcione sem que a jpa reclame colocar
-	 *(mappedBy = "order" , cascade = CascadeType.ALL)
+	 * para que o mapeamento funcione sem que a jpa reclame colocar (mappedBy =
+	 * "order" , cascade = CascadeType.ALL)
 	 */
 
 	@OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
 	private Payment payment;
+
+	@OneToMany(mappedBy = "pk.order")
+	private Set<OrderItem> items = new HashSet<>();
+
+	public Set<OrderItem> getItems() {
+		return items;
+	}
+
+	public List<Product> getProducts() {
+		return items.stream().map(x -> x.getProduct()).toList();
+	}
 }
