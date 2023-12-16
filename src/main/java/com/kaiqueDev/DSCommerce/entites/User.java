@@ -34,7 +34,7 @@ public class User implements Serializable{
 	@EqualsAndHashCode.Include
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nome;
+	private String name;
 	
 	// não permite que se repita o email no BD 
 	@Column(unique = true)
