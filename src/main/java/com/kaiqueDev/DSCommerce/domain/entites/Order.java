@@ -1,4 +1,4 @@
-package com.kaiqueDev.DSCommerce.entites;
+package com.kaiqueDev.DSCommerce.domain.entites;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.kaiqueDev.DSCommerce.enuns.OrderStatus;
+import com.kaiqueDev.DSCommerce.domain.enuns.OrderStatus;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

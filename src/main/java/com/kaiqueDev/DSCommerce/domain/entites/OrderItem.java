@@ -1,8 +1,8 @@
-package com.kaiqueDev.DSCommerce.entites;
+package com.kaiqueDev.DSCommerce.domain.entites;
 
 import java.io.Serializable;
 
-import com.kaiqueDev.DSCommerce.entites.pk.OrderItemPK;
+import com.kaiqueDev.DSCommerce.domain.entites.pk.OrderItemPK;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;

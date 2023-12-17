@@ -1,4 +1,4 @@
-package com.kaiqueDev.DSCommerce.entites;
+package com.kaiqueDev.DSCommerce.domain.entites;
 
 import java.io.Serializable;
 import java.time.Instant;

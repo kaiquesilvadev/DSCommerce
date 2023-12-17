@@ -1,4 +1,4 @@
-package com.kaiqueDev.DSCommerce.enuns;
+package com.kaiqueDev.DSCommerce.domain.enuns;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

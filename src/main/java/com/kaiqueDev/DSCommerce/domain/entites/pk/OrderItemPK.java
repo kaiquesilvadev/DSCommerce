@@ -1,7 +1,7 @@
-package com.kaiqueDev.DSCommerce.entites.pk;
+package com.kaiqueDev.DSCommerce.domain.entites.pk;
 
-import com.kaiqueDev.DSCommerce.entites.Order;
-import com.kaiqueDev.DSCommerce.entites.Product;
+import com.kaiqueDev.DSCommerce.domain.entites.Order;
+import com.kaiqueDev.DSCommerce.domain.entites.Product;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
