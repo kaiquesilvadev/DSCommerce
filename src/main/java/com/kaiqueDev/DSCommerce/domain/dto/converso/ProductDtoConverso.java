@@ -6,6 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.kaiqueDev.DSCommerce.domain.dto.request.ProductDtoRequest;
 import com.kaiqueDev.DSCommerce.domain.dto.responce.ProductDtoResponce;
 import com.kaiqueDev.DSCommerce.domain.entites.Product;
 
@@ -19,7 +20,13 @@ public class ProductDtoConverso {
 		return mapper.map(product, ProductDtoResponce.class);
 	}
 	
+	public Product convertiDto(ProductDtoRequest productDto) {
+		return mapper.map(productDto, Product.class);
+	}
+	
 	public List<ProductDtoResponce> ListDto(List<Product> list) {
 		return list.stream().map(Product -> convertiEntiti(Product)).toList();
 	}
+	
+	
 }
