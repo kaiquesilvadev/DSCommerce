@@ -11,6 +11,8 @@ import com.kaiqueDev.DSCommerce.domain.dto.request.ProductDtoRequest;
 import com.kaiqueDev.DSCommerce.domain.entites.Product;
 import com.kaiqueDev.DSCommerce.domain.exception.EntidadeNaoEncontradaException;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class ProductService {
 
@@ -35,8 +37,16 @@ public class ProductService {
 	/*
 	 * TODO : adiciona logica pra validar categorias depois de de fazer CRUd de categorias
 	 */
+	@Transactional
 	public Product adicionar(ProductDtoRequest dtoRequest) {
 		Product product = converso.convertiDto(dtoRequest);
+		return repository.save(product);
+	}
+	
+	@Transactional
+	public Product atualizar(ProductDtoRequest dtoRequest , Long id) {
+		Product product = buscaPorId(id);
+		converso.atualiza(dtoRequest , product);
 		return repository.save(product);
 	}
 }

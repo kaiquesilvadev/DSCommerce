@@ -24,6 +24,10 @@ public class ProductDtoConverso {
 		return mapper.map(productDto, Product.class);
 	}
 	
+	public void atualiza(ProductDtoRequest productDto, Product product) {
+		mapper.map(productDto, product);
+	}
+	
 	public List<ProductDtoResponce> ListDto(List<Product> list) {
 		return list.stream().map(Product -> convertiEntiti(Product)).toList();
 	}
