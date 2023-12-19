@@ -1,6 +1,7 @@
 package com.kaiqueDev.DSCommerce.domain.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import com.kaiqueDev.DSCommerce.domain.Repositoris.ProductRepository;
 import com.kaiqueDev.DSCommerce.domain.dto.converso.ProductDtoConverso;
 import com.kaiqueDev.DSCommerce.domain.dto.request.ProductDtoRequest;
 import com.kaiqueDev.DSCommerce.domain.entites.Product;
+import com.kaiqueDev.DSCommerce.domain.exception.EntidadeEmUsoException;
 import com.kaiqueDev.DSCommerce.domain.exception.EntidadeNaoEncontradaException;
 
 import jakarta.transaction.Transactional;
@@ -48,5 +50,16 @@ public class ProductService {
 		Product product = buscaPorId(id);
 		converso.atualiza(dtoRequest , product);
 		return repository.save(product);
+	}
+	
+	@Transactional
+	public void delete(Long id) {
+		try {
+			buscaPorId(id);
+			repository.deleteById(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new EntidadeEmUsoException(id);
+		}
+		
 	}
 }
