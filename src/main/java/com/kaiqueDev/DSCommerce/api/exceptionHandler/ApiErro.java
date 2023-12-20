@@ -1,15 +1,16 @@
 package com.kaiqueDev.DSCommerce.api.exceptionHandler;
 
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
-@AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Getter
-@Setter
 @Builder
 public class ApiErro {
 
@@ -17,4 +18,12 @@ public class ApiErro {
 	private Integer status;
 	private String erro;
 	private String path;
+	private List<Field> fields = new ArrayList<>();
+	
+	@Getter
+	@Builder
+	public static class Field{
+		private String nome;
+		private String Message;
+	}
 }

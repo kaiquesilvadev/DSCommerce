@@ -3,6 +3,8 @@ package com.kaiqueDev.DSCommerce.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -22,6 +24,8 @@ import com.kaiqueDev.DSCommerce.domain.dto.request.ProductDtoRequest;
 import com.kaiqueDev.DSCommerce.domain.dto.responce.ProductDtoResponce;
 import com.kaiqueDev.DSCommerce.domain.entites.Product;
 import com.kaiqueDev.DSCommerce.domain.services.ProductService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/products")
@@ -47,12 +51,12 @@ public class ProductControlle {
 
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping
-	public ProductDtoResponce adicionar(@RequestBody ProductDtoRequest dtoRequest) {
+	public ProductDtoResponce adicionar(@Valid @RequestBody ProductDtoRequest dtoRequest) {
 		return converso.convertiEntiti(service.adicionar(dtoRequest));
 	}
 	
 	@PutMapping("/{id}")
-	public ProductDtoResponce adicionar(@RequestBody ProductDtoRequest dtoRequest , @PathVariable Long id) {
+	public ProductDtoResponce adicionar(@Valid @RequestBody ProductDtoRequest dtoRequest , @PathVariable Long id) {
 		return converso.convertiEntiti(service.atualizar(dtoRequest,id));
 	}
 	

@@ -14,6 +14,7 @@ import com.kaiqueDev.DSCommerce.domain.exception.EntidadeEmUsoException;
 import com.kaiqueDev.DSCommerce.domain.exception.EntidadeNaoEncontradaException;
 
 import jakarta.transaction.Transactional;
+import jakarta.transaction.Transactional.TxType;
 
 @Service
 public class ProductService {
@@ -37,29 +38,31 @@ public class ProductService {
 	}
 
 	/*
-	 * TODO : adiciona logica pra validar categorias depois de de fazer CRUd de categorias
+	 * TODO : adiciona logica pra validar categorias depois de de fazer CRUd de
+	 * categorias
 	 */
 	@Transactional
 	public Product adicionar(ProductDtoRequest dtoRequest) {
 		Product product = converso.convertiDto(dtoRequest);
 		return repository.save(product);
 	}
-	
+
 	@Transactional
-	public Product atualizar(ProductDtoRequest dtoRequest , Long id) {
+	public Product atualizar(ProductDtoRequest dtoRequest, Long id) {
 		Product product = buscaPorId(id);
-		converso.atualiza(dtoRequest , product);
+		converso.atualiza(dtoRequest, product);
 		return repository.save(product);
 	}
-	
+
 	@Transactional
 	public void delete(Long id) {
 		try {
 			buscaPorId(id);
 			repository.deleteById(id);
+			repository.flush();
 		} catch (DataIntegrityViolationException e) {
 			throw new EntidadeEmUsoException(id);
 		}
-		
+
 	}
 }
