@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,8 +39,9 @@ public class ProductControlle {
 	ProductDtoConverso converso;
 
 	@GetMapping
-	public Page<ProductDtoResponce> lista(Pageable pageable) {
-		Page<Product> pageProduct = service.lista(pageable);
+	public Page<ProductDtoResponce> lista(@RequestParam(name = "name" , defaultValue = "") 
+	String nome , Pageable pageable) {
+		Page<Product> pageProduct = service.lista(nome, pageable);
 		List<ProductDtoResponce> Product = converso.ListDto(pageProduct.getContent());
 		return new PageImpl<>(Product, pageable, pageProduct.getTotalElements());
 	}

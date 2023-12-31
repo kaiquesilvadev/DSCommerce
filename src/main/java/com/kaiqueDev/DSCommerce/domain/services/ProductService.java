@@ -14,7 +14,6 @@ import com.kaiqueDev.DSCommerce.domain.exception.EntidadeEmUsoException;
 import com.kaiqueDev.DSCommerce.domain.exception.EntidadeNaoEncontradaException;
 
 import jakarta.transaction.Transactional;
-import jakarta.transaction.Transactional.TxType;
 
 @Service
 public class ProductService {
@@ -25,9 +24,10 @@ public class ProductService {
 	@Autowired
 	private ProductDtoConverso converso;
 
-	public Page<Product> lista(Pageable pageable) {
-		return repository.findAll(pageable);
+	public Page<Product> lista(String nome, Pageable pageable) {
+		return repository.lista(nome , pageable);
 	}
+
 
 	/*
 	 * TODO : trocar a Exception por uma mais generica depois
