@@ -5,6 +5,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kaiqueDev.DSCommerce.domain.Repositoris.ProductRepository;
 import com.kaiqueDev.DSCommerce.domain.dto.converso.ProductDtoConverso;
@@ -13,7 +14,6 @@ import com.kaiqueDev.DSCommerce.domain.entites.Product;
 import com.kaiqueDev.DSCommerce.domain.exception.EntidadeEmUsoException;
 import com.kaiqueDev.DSCommerce.domain.exception.EntidadeNaoEncontradaException;
 
-import jakarta.transaction.Transactional;
 
 @Service
 public class ProductService {
@@ -24,6 +24,7 @@ public class ProductService {
 	@Autowired
 	private ProductDtoConverso converso;
 
+	@Transactional(readOnly = true)
 	public Page<Product> lista(String nome, Pageable pageable) {
 		return repository.lista(nome , pageable);
 	}
@@ -33,6 +34,7 @@ public class ProductService {
 	 * TODO : trocar a Exception por uma mais generica depois
 	 */
 
+	@Transactional(readOnly = true)
 	public Product buscaPorId(Long id) {
 		return repository.findById(id).orElseThrow(() -> new EntidadeNaoEncontradaException(id));
 	}
