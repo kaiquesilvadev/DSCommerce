@@ -3,8 +3,6 @@ package com.kaiqueDev.DSCommerce.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -24,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kaiqueDev.DSCommerce.domain.dto.converso.ProductDtoConverso;
 import com.kaiqueDev.DSCommerce.domain.dto.request.ProductDtoRequest;
 import com.kaiqueDev.DSCommerce.domain.dto.responce.ProductDtoResponce;
+import com.kaiqueDev.DSCommerce.domain.dto.responce.ProductMinDtoResponce;
 import com.kaiqueDev.DSCommerce.domain.entites.Product;
 import com.kaiqueDev.DSCommerce.domain.services.ProductService;
 
@@ -40,10 +39,10 @@ public class ProductControlle {
 	private ProductDtoConverso converso;
 
 	@GetMapping
-	public Page<ProductDtoResponce> lista(@RequestParam(name = "name" , defaultValue = "") 
+	public Page<ProductMinDtoResponce> lista(@RequestParam(name = "name" , defaultValue = "") 
 	String nome , Pageable pageable) {
 		Page<Product> pageProduct = service.lista(nome, pageable);
-		List<ProductDtoResponce> Product = converso.ListDto(pageProduct.getContent());
+		List<ProductMinDtoResponce> Product = converso.ListDto(pageProduct.getContent());
 		return new PageImpl<>(Product, pageable, pageProduct.getTotalElements());
 	}
 

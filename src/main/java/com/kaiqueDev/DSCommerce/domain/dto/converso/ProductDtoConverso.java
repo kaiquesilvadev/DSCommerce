@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.kaiqueDev.DSCommerce.domain.dto.request.ProductDtoRequest;
 import com.kaiqueDev.DSCommerce.domain.dto.responce.ProductDtoResponce;
+import com.kaiqueDev.DSCommerce.domain.dto.responce.ProductMinDtoResponce;
 import com.kaiqueDev.DSCommerce.domain.entites.Product;
 
 @Component
@@ -20,6 +21,10 @@ public class ProductDtoConverso {
 		return mapper.map(product, ProductDtoResponce.class);
 	}
 	
+	public ProductMinDtoResponce convertiMin(Product product) {
+		return mapper.map(product, ProductMinDtoResponce.class);
+	}
+	
 	public Product convertiDto(ProductDtoRequest productDto) {
 		return mapper.map(productDto, Product.class);
 	}
@@ -28,8 +33,8 @@ public class ProductDtoConverso {
 		mapper.map(productDto, product);
 	}
 	
-	public List<ProductDtoResponce> ListDto(List<Product> list) {
-		return list.stream().map(Product -> convertiEntiti(Product)).toList();
+	public List<ProductMinDtoResponce> ListDto(List<Product> list) {
+		return list.stream().map(Product -> convertiMin(Product)).toList();
 	}
 	
 	
