@@ -37,7 +37,7 @@ public class ProductControlle {
 	private ProductService service;
 
 	@Autowired
-	ProductDtoConverso converso;
+	private ProductDtoConverso converso;
 
 	@GetMapping
 	public Page<ProductDtoResponce> lista(@RequestParam(name = "name" , defaultValue = "") 
