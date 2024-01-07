@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -51,17 +52,20 @@ public class ProductControlle {
 		return converso.convertiEntiti(service.buscaPorId(id));
 	}
 
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping
 	public ProductDtoResponce adicionar(@Valid @RequestBody ProductDtoRequest dtoRequest) {
 		return converso.convertiEntiti(service.adicionar(dtoRequest));
 	}
 	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@PutMapping("/{id}")
 	public ProductDtoResponce adicionar(@Valid @RequestBody ProductDtoRequest dtoRequest , @PathVariable Long id) {
 		return converso.convertiEntiti(service.atualizar(dtoRequest,id));
 	}
 	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
