@@ -28,10 +28,10 @@ public class Role implements GrantedAuthority {
 	private Long id;
 
 	@EqualsAndHashCode.Include
-	private String Authority;
+	private String authority;
 
 	@Override
 	public String getAuthority() {
-		return Authority;
+		return authority;
 	}
 }

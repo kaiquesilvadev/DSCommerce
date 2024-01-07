@@ -61,17 +61,16 @@ public class User implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.roles;
 	}
-	
+
 	public void addRole(Role role) {
 		this.roles.add(role);
 	}
-    
-    public Boolean hasRole(String roleName) {
-    	return roles.stream().anyMatch(r -> r.getAuthority().equals(roleName));
-    }
+
+	public Boolean hasRole(String roleName) {
+		return roles.stream().anyMatch(r -> r.getAuthority().equals(roleName));
+	}
 
 	@Override
 	public String getUsername() {
