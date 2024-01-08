@@ -61,6 +61,7 @@ public class ProductControlle {
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@PutMapping("/{id}")
 	public ProductDtoResponce adicionar(@Valid @RequestBody ProductDtoRequest dtoRequest , @PathVariable Long id) {
+		
 		return converso.convertiEntiti(service.atualizar(dtoRequest,id));
 	}
 	

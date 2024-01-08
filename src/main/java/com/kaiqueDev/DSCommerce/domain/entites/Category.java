@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.kaiqueDev.DSCommerce.domain.dto.referencias.CategorieDtoRef;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -34,4 +36,8 @@ public class Category implements Serializable {
 
 	@ManyToMany(mappedBy = "categories")
 	private Set<Product> products = new HashSet<>();
+
+	public Category(CategorieDtoRef categoryId) {
+		this.id = categoryId.getId();
+	}
 }
