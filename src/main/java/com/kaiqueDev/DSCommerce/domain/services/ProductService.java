@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.orm.jpa.JpaObjectRetrievalFailureException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +26,7 @@ public class ProductService {
 	@Autowired
 	private ProductDtoConverso converso;
 
-	@Transactional(readOnly = true)
+    @Transactional(readOnly = true)
 	public Page<Product> lista(String nome, Pageable pageable) {
 		return repository.lista(nome, pageable);
 	}
@@ -34,11 +35,13 @@ public class ProductService {
 	 * TODO : trocar a Exception por uma mais generica depois
 	 */
 
-	@Transactional(readOnly = true)
-	public Product buscaPorId(Long id) {
-		return repository.findById(id).orElseThrow(() -> new EntidadeNaoEncontradaException(id));
-	}
+    @Transactional(readOnly = true)
+    public Product buscaPorId(Long id) {
+        Product entity = repository.buscaPorId(id).orElseThrow(() -> new EntidadeNaoEncontradaException(id));
 
+      
+        return entity;
+    }
 	/*
 	 * TODO : adiciona logica pra validar categorias depois de de fazer CRUd de
 	 * categorias
@@ -54,24 +57,24 @@ public class ProductService {
 
 	}
 
-	@Transactional
+	@Transactional(propagation = Propagation.SUPPORTS)
 	public Product atualizar(ProductDtoRequest dtoRequest, Long id) {
 		try {
 			Product product = buscaPorId(id);
+			product.getCategories().clear();
 			converso.atualiza(dtoRequest, product);
+			repository.flush();
 			return repository.save(product);
-
-		} catch (DataIntegrityViolationException e) {
+		} catch (JpaObjectRetrievalFailureException e) {
 			throw new EntidadeInexistenteException("Categories");
 		}
 	}
 
-	@Transactional
+	@Transactional(propagation = Propagation.SUPPORTS)
 	public void delete(Long id) {
 		try {
 			buscaPorId(id);
 			repository.deleteById(id);
-			repository.flush();
 		} catch (DataIntegrityViolationException e) {
 			throw new EntidadeEmUsoException(id);
 		}
