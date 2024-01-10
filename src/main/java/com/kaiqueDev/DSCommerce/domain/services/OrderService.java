@@ -24,12 +24,9 @@ public class OrderService {
 
 	@Autowired
 	private UserSecurityService userService;
-	
+
 	@Autowired
 	private ProductService productService;
-	
-	@Autowired
-	private OrderItemRepository itemRepository;
 
 	@Transactional(readOnly = true)
 	public Order findById(Long id) {
@@ -39,7 +36,7 @@ public class OrderService {
 
 	@Transactional(propagation = Propagation.SUPPORTS)
 	public Order adicionar(OrderDtoRequest dtoRequest) {
-		
+
 		Order entity = converso.convertiDTO(dtoRequest);
 		converteItens(entity);
 		entity.aguardandoPagamento();
@@ -54,8 +51,6 @@ public class OrderService {
 			item.setPrice(product.getPrice());
 			item.setOrder(entity);
 			item.setOrderProduct(product);
-			});
+		});
 	}
-	
-	
 }

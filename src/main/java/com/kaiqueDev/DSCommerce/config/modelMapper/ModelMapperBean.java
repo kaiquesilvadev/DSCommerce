@@ -38,7 +38,9 @@ public class ModelMapperBean {
 		 .addMapping(nome -> nome.getProduct().getName() , // sourceGetter passa o valor para o destino
 				 (nomeDto , nomeEntity) -> nomeDto.setName((String) nomeEntity)) // destinationSetter(destino, valor)
 		 .addMapping(id -> id.getProduct().getId() , // sourceGetter passa o valor para o destino
-				 (idDto , idEntity) -> idDto.setProductId((Long) idEntity)); // destinationSetter(destino, valor)
+				 (idDto , idEntity) -> idDto.setProductId((Long) idEntity))
+		 .addMapping(img -> img.getProduct().getImgUrl() , // sourceGetter passa o valor para o destino
+				 (nomeDto , img) -> nomeDto.setImgUrl((String) img)); // destinationSetter(destino, valor)
 		 	 
 		return modelMapper;
 	}

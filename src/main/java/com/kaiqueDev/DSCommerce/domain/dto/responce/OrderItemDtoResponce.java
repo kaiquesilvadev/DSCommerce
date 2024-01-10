@@ -11,6 +11,7 @@ public class OrderItemDtoResponce {
 	private String name; 
 	private Double price;
 	private Integer  quantity;
+	private String imgUrl;
 	
 	public Double getSubTotal() {
 		return price * quantity;
