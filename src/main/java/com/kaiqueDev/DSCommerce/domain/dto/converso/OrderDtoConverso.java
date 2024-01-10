@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.kaiqueDev.DSCommerce.domain.dto.request.OrderDtoRequest;
 import com.kaiqueDev.DSCommerce.domain.dto.responce.OrderDtoResponce;
 import com.kaiqueDev.DSCommerce.domain.entites.Order;
 
@@ -15,5 +16,9 @@ public class OrderDtoConverso {
 	
 	public OrderDtoResponce convertiEntiti(Order order) {
 		return mapper.map(order, OrderDtoResponce.class);
+	}
+	
+	public Order convertiDTO(OrderDtoRequest request) {
+		return mapper.map(request, Order.class);
 	}
 }

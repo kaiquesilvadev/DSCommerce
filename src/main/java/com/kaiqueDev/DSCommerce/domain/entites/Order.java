@@ -11,7 +11,6 @@ import com.kaiqueDev.DSCommerce.domain.enuns.OrderStatus;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -54,10 +53,10 @@ public class Order implements Serializable {
 	 * "order" , cascade = CascadeType.ALL)
 	 */
 
-	@OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "order")
 	private Payment payment;
 
-	@OneToMany(mappedBy = "pk.order")
+	@OneToMany(mappedBy = "pk.order", cascade = CascadeType.ALL)
 	private Set<OrderItem> items = new HashSet<>();
 
 	public Set<OrderItem> getItems() {
@@ -66,5 +65,13 @@ public class Order implements Serializable {
 
 	public List<Product> getProducts() {
 		return items.stream().map(x -> x.getProduct()).toList();
+	}
+	
+	public void salvaData() {
+		setMoment(Instant.now());
+	}
+	
+	public void aguardandoPagamento() {
+		setStatus(OrderStatus.PAID);;
 	}
 }

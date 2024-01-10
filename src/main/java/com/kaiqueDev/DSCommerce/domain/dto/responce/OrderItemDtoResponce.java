@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class OrderItemDtoResponce {
 
-	private Long ProductId;
+	private Long productId;
 	private String name; 
 	private Double price;
 	private Integer  quantity;
