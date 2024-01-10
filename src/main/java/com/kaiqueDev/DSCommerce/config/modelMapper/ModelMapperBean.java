@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.kaiqueDev.DSCommerce.domain.dto.request.OrderItemDtoRequest;
 import com.kaiqueDev.DSCommerce.domain.dto.responce.OrderItemDtoResponce;
 import com.kaiqueDev.DSCommerce.domain.entites.OrderItem;
 
@@ -41,6 +42,10 @@ public class ModelMapperBean {
 				 (idDto , idEntity) -> idDto.setProductId((Long) idEntity))
 		 .addMapping(img -> img.getProduct().getImgUrl() , // sourceGetter passa o valor para o destino
 				 (nomeDto , img) -> nomeDto.setImgUrl((String) img)); // destinationSetter(destino, valor)
+		 
+		 modelMapper.createTypeMap(OrderItem.class, OrderItemDtoRequest.class)
+		 .addMapping(id -> id.getProduct().getId() ,
+				 (idDto , idEntity) -> idDto.setProductId((Long) idEntity));
 		 	 
 		return modelMapper;
 	}
