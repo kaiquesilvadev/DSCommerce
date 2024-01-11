@@ -1,4 +1,4 @@
-package com.kaiqueDev.DSCommerce.config.security;
+package com.kaiqueDev.DSCommerce.domain.config.security;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package com.kaiqueDev.DSCommerce.config.security.customGrant;
+package com.kaiqueDev.DSCommerce.domain.config.security.customGrant;
 
 import java.security.Principal;
 import java.util.HashSet;

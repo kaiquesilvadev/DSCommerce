@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kaiqueDev.DSCommerce.domain.Repositoris.OrderItemRepository;
 import com.kaiqueDev.DSCommerce.domain.Repositoris.OrderRepository;
 import com.kaiqueDev.DSCommerce.domain.dto.converso.OrderDtoConverso;
 import com.kaiqueDev.DSCommerce.domain.dto.request.OrderDtoRequest;
