@@ -66,7 +66,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 	}
 
 	@ExceptionHandler(EntidadeEmUsoException.class)
-	private ResponseEntity<?> tratarEntidadeEmUsoException(CredencialInvalidaException ex, HttpServletRequest request) {
+	private ResponseEntity<?> tratarEntidadeEmUsoException(EntidadeEmUsoException ex, HttpServletRequest request) {
 		ApiErro erro = ApiErro.builder().status(HttpStatus.CONFLICT.value()).path(request.getRequestURI())
 				.timestamp(OffsetDateTime.now()).erro(ex.getMessage()).build();
 
