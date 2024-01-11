@@ -17,6 +17,7 @@ import com.kaiqueDev.DSCommerce.domain.dto.converso.UserDtoConverso;
 import com.kaiqueDev.DSCommerce.domain.dto.responce.UseDtoResponce;
 import com.kaiqueDev.DSCommerce.domain.entites.Role;
 import com.kaiqueDev.DSCommerce.domain.entites.User;
+import com.kaiqueDev.DSCommerce.domain.exception.CredencialInvalidaException;
 import com.kaiqueDev.DSCommerce.domain.project.UserDetailsProjection;
 
 @Service
@@ -73,5 +74,21 @@ public class UserSecurityService implements UserDetailsService {
 
 		User user = authenticated();
 		return converso.convertiEntity(user);
+	}
+	
+	
+	/**
+	 * Valida se o usuário autenticado é o próprio usuário alvo ou um administrador.
+	 * Se o usuário autenticado não possuir a função de administrador e não for o usuário alvo,
+	 * uma exceção CredencialInvalidaException é lançada.
+	 *
+	 * @param userId Identificador do usuário alvo a ser validado.
+	 * @throws CredencialInvalidaException Exceção lançada quando as credenciais são inválidas para a operação.
+	 */
+	public void validateSelfOrAdmin(long userId) {
+		User me = authenticated();
+		if (!me.hasRole("ROLE_ADMIN") && !me.getId().equals(userId)) {
+			throw new CredencialInvalidaException();
+		}
 	}
 }

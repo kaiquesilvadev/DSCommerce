@@ -71,7 +71,7 @@ public class User implements UserDetails {
 	public Boolean hasRole(String roleName) {
 		return roles.stream().anyMatch(r -> r.getAuthority().equals(roleName));
 	}
-
+	
 	@Override
 	public String getUsername() {
 		return email;

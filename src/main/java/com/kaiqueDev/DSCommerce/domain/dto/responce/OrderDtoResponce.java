@@ -12,6 +12,7 @@ import lombok.Setter;
 @Setter
 public class OrderDtoResponce {
 
+	private Long id;
 	private Instant moment;
 	private OrderStatus status;
 	private UseMinDtoResponce client;

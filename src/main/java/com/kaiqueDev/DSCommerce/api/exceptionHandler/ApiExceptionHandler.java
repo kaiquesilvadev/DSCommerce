@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import com.kaiqueDev.DSCommerce.api.exceptionHandler.ApiErro.Field;
 import com.kaiqueDev.DSCommerce.api.exceptionHandler.enuns.ProblemType;
+import com.kaiqueDev.DSCommerce.domain.exception.CredencialInvalidaException;
 import com.kaiqueDev.DSCommerce.domain.exception.EntidadeEmUsoException;
 import com.kaiqueDev.DSCommerce.domain.exception.EntidadeInexistenteException;
 import com.kaiqueDev.DSCommerce.domain.exception.EntidadeNaoEncontradaException;
@@ -65,11 +66,22 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 	}
 
 	@ExceptionHandler(EntidadeEmUsoException.class)
-	private ResponseEntity<?> tratarEntidadeEmUsoException(EntidadeEmUsoException ex, HttpServletRequest request) {
+	private ResponseEntity<?> tratarEntidadeEmUsoException(CredencialInvalidaException ex, HttpServletRequest request) {
 		ApiErro erro = ApiErro.builder().status(HttpStatus.CONFLICT.value()).path(request.getRequestURI())
 				.timestamp(OffsetDateTime.now()).erro(ex.getMessage()).build();
 
 		return ResponseEntity.status(HttpStatus.CONFLICT.value()).body(erro);
+	}
+	
+	@ExceptionHandler(CredencialInvalidaException.class)
+	private ResponseEntity<?> tratarCredencialInvalidaException(CredencialInvalidaException ex, HttpServletRequest request) {
+		ApiErro erro = ApiErro.builder()
+				.status(HttpStatus.FORBIDDEN.value())
+				.path(request.getRequestURI())
+				.timestamp(OffsetDateTime.now())
+				.erro(ex.getMessage()).build();
+
+		return ResponseEntity.status(HttpStatus.FORBIDDEN.value()).body(erro);
 	}
 
 	@Override

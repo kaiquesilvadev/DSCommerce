@@ -30,8 +30,15 @@ public class OrderService {
 
 	@Transactional(readOnly = true)
 	public Order findById(Long id) {
-		return repository.findById(id).orElseThrow(() -> new EntidadeNaoEncontradaException(id));
+		Order order = repository.findById(id).orElseThrow(() -> new EntidadeNaoEncontradaException(id));
 
+		/*
+		 * Valida se o pedido em questão pertence ao usuário atualmente logado ou se o
+		 * usuário possui privilégios de administrador.
+		 */
+		userService.validateSelfOrAdmin(order.getClient().getId());
+
+		return order;
 	}
 
 	@Transactional(propagation = Propagation.SUPPORTS)

@@ -29,13 +29,13 @@ public class OrderController {
 	@Autowired
 	private OrderDtoConverso converso;
 
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENT')")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_OPERATOR')")
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<OrderDtoResponce> findById(@PathVariable Long id) {
 		return ResponseEntity.ok(converso.convertiEntiti(service.findById(id)));
 	}
 	
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENT')")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_OPERATOR')")
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping
 	public OrderDtoResponce adicionar(@Valid @RequestBody OrderDtoRequest dtoRequest) {
