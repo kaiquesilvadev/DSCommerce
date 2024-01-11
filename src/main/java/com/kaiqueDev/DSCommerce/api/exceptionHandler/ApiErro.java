@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Getter;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
+
 @Getter
 @Builder
 public class ApiErro {
@@ -20,6 +20,7 @@ public class ApiErro {
 	private String path;
 	private List<Field> fields = new ArrayList<>();
 	
+	@JsonInclude(JsonInclude.Include.NON_NULL)
 	@Getter
 	@Builder
 	public static class Field{
