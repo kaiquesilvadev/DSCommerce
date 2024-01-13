@@ -1,5 +1,10 @@
 # Sistema DSCommerce
 
+![Java](https://img.shields.io/badge/Java-11-orange.svg)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.5.4-brightgreen.svg)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-blue.svg)
+![H2](https://img.shields.io/badge/H2-Database-lightgrey.svg)
+
 ## Visão Geral
 O Sistema DSCommerce é uma aplicação voltada para cursos oferecidos pela DevSuperior no processo de aprendizado dos alunos. Desenvolvido com base em premissas que visam um modelo de domínio simples e abrangente, o sistema permite explorar vários tipos de relacionamentos entre as entidades de negócio.
 
