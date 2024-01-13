@@ -7,8 +7,8 @@ O Sistema DSCommerce é uma aplicação voltada para cursos oferecidos pela DevS
 
 1. **Clone o repositório:**
     ```bash
-    git clone https://github.com/seu-usuario/sistema-dscommerce.git
-    cd sistema-dscommerce
+    git clone https://github.com/kaiquesilvadev/DSCommerce
+    cd DSCommerce
     ```
 
 2. **Instale as dependências:**
@@ -81,10 +81,6 @@ O Sistema DSCommerce é uma aplicação voltada para cursos oferecidos pela DevS
 - [Visualizar Pedidos](#visualizar-pedidos)
 - [Registrar Pagamento](#registrar-pagamento)
 - [Reportar Pedidos](#reportar-pedidos)
-
-## Desenvolvedores
-- [Seu Nome](https://github.com/seu-usuario)
-- [Outro Nome](https://github.com/outro-usuario)
 
 ## Contribuições
 Contribuições são bem-vindas! Sinta-se à vontade para abrir uma *issue* ou criar um *pull request*.
