@@ -32,10 +32,30 @@ O Sistema DSCommerce é uma aplicação voltada para cursos oferecidos pela DevS
 
 ![UML](https://github.com/kaiquesilvadev/DSCommerce/blob/main/print/uml.png)
 
+## Estrutura do Projeto
+
+- **presentation:** Camada de Apresentação
+  - Responsável pela interação do usuário.
+  - Implementação de interfaces intuitivas e amigáveis.
+
+- **application:** Camada de Aplicação
+  - Contém a lógica de negócios do DSCommerce.
+  - Gerencia casos de uso, orquestrando a interação entre diferentes componentes.
+
+- **domain:** Camada de Domínio
+  - Representa o núcleo do sistema, contendo entidades e regras de negócio.
+  - Modelagem de conceitos específicos do DSCommerce.
+
+- **infrastructure:** Camada de Infraestrutura
+  - Lida com aspectos técnicos e de implementação.
+  - Implementação de acesso a banco de dados, APIs externas, etc.
+
 ## Premissas
 - Modelo de domínio simples, mas abrangente.
 - Exploração de vários tipos de relacionamentos entre entidades.
 - Aplicação de conhecimentos importantes em fundamentos.
+
+![UML](https://github.com/kaiquesilvadev/DSCommerce/blob/main/print/camadas.png)
 
 ## Funcionalidades Principais
 
