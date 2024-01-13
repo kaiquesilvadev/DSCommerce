@@ -50,12 +50,12 @@ O Sistema DSCommerce é uma aplicação voltada para cursos oferecidos pela DevS
   - Lida com aspectos técnicos e de implementação.
   - Implementação de acesso a banco de dados, APIs externas, etc.
 
+![UML](https://github.com/kaiquesilvadev/DSCommerce/blob/main/print/camadas.png)
+
 ## Premissas
 - Modelo de domínio simples, mas abrangente.
 - Exploração de vários tipos de relacionamentos entre entidades.
 - Aplicação de conhecimentos importantes em fundamentos.
-
-![UML](https://github.com/kaiquesilvadev/DSCommerce/blob/main/print/camadas.png)
 
 ## Funcionalidades Principais
 
