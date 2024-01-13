@@ -26,6 +26,12 @@ O Sistema DSCommerce é uma aplicação voltada para cursos oferecidos pela DevS
     npm start
     ```
 
+## Diagrama de Classes
+
+- O diagrama de classes apresenta a estrutura do projeto e as relações entre as diferentes classes e entidades. Ele fornece uma visão visual do design da aplicação e ajuda a entender como as partes do sistema interagem entre si
+
+![UML](https://github.com/kaiquesilvadev/DSCommerce/blob/main/print/uml.png)
+
 ## Premissas
 - Modelo de domínio simples, mas abrangente.
 - Exploração de vários tipos de relacionamentos entre entidades.
