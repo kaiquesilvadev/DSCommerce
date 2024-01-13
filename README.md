@@ -34,21 +34,22 @@ O Sistema DSCommerce é uma aplicação voltada para cursos oferecidos pela DevS
 
 ## Estrutura do Projeto
 
-- **presentation:** Camada de Apresentação
+
+- **resource-layer:** Camada de Recursos (Presentation)
   - Responsável pela interação do usuário.
-  - Implementação de interfaces intuitivas e amigáveis.
+  - Implementação de controladores RESTful e interfaces de usuário.
 
-- **application:** Camada de Aplicação
+- **service-layer:** Camada de Serviço (Application)
   - Contém a lógica de negócios do DSCommerce.
-  - Gerencia casos de uso, orquestrando a interação entre diferentes componentes.
+  - Gerencia casos de uso e orquestra a interação entre diferentes componentes.
 
-- **domain:** Camada de Domínio
+- **data-access-layer:** Camada de Acesso a Dados (Infrastructure)
+  - Lida com aspectos técnicos de acesso a dados.
+  - Implementação de acesso a banco de dados, chamadas de API, etc.
+
+- **entities:** Camada de Entidades (Domain)
   - Representa o núcleo do sistema, contendo entidades e regras de negócio.
   - Modelagem de conceitos específicos do DSCommerce.
-
-- **infrastructure:** Camada de Infraestrutura
-  - Lida com aspectos técnicos e de implementação.
-  - Implementação de acesso a banco de dados, APIs externas, etc.
 
 ![UML](https://github.com/kaiquesilvadev/DSCommerce/blob/main/print/camadas.png)
 
